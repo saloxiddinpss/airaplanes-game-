@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    overflow: hidden;
+    font-family: 'Press Start 2P', cursive;
+    color: #fff;
+    user-select: none;
+}
+
+#game {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+}
+
+#game canvas {
+    display: block;
+}
+
+.crosshair {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0.85;
+}
+
+.ch-line {
+    position: absolute;
+    background: #fff;
+    box-shadow: 0 0 3px rgba(0,0,0,0.8);
+}
+
+.ch-top    { top: 0; left: 50%; width: 2px; height: 10px; transform: translateX(-50%); }
+.ch-bottom { bottom: 0; left: 50%; width: 2px; height: 10px; transform: translateX(-50%); }
+.ch-left   { left: 0; top: 50%; width: 10px; height: 2px; transform: translateY(-50%); }
+.ch-right  { right: 0; top: 50%; width: 10px; height: 2px; transform: translateY(-50%); }
+
+.ch-dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 3px;
+    height: 3px;
+    background: #ff8c00;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 4px #ff8c00;
+}
+
+.hud {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+    z-index: 10;
+    font-size: 12px;
+    text-shadow: 2px 2px 0 #000, -1px -1px 0 #000;
+}
+
+.hud-left, .hud-right {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.hud-right {
+    align-items: flex-end;
+}
+
+.hud-label {
+    font-size: 10px;
+    color: #ff8c00;
+    margin-bottom: 4px;
+}
+
+.enemy-count {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+}
+
+.enemy-icon {
+    width: 14px;
+    height: 14px;
+    background-color: #888;
+    border: 1px solid #000;
+    position: relative;
+}
+
+.enemy-icon::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 6px;
+    height: 6px;
+    background-color: #f00;
+    border-radius: 50%;
+}
+
+.hud-item {
+    font-size: 12px;
+}
+
+.score { color: #ff8c00; }
+.high-score { color: #fff; }
+
+.footer {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.sound-toggle {
+    pointer-events: auto;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 9px;
+    padding: 10px 14px;
+    background-color: rgba(20, 20, 20, 0.8);
+    color: #fff;
+    border: 2px solid #555;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.sound-toggle:hover {
+    border-color: #ff8c00;
+    color: #ff8c00;
+}
+
+.hint {
+    font-size: 8px;
+    color: #888;
+    text-shadow: 1px 1px 0 #000;
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    cursor: pointer;
+}
+
+.overlay-content {
+    text-align: center;
+    padding: 40px;
+    border: 4px solid #555;
+    background: #0a0a0a;
+    max-width: 500px;
+}
+
+.overlay-content h1 {
+    font-size: 28px;
+    color: #ff8c00;
+    margin-bottom: 16px;
+    letter-spacing: 4px;
+    text-shadow: 3px 3px 0 #000;
+}
+
+.subtitle {
+    font-size: 10px;
+    color: #888;
+    margin-bottom: 30px;
+}
+
+.start-btn {
+    font-size: 13px;
+    color: #fff;
+    padding: 16px 24px;
+    border: 2px solid #ff8c00;
+    background: rgba(255, 140, 0, 0.1);
+    margin-bottom: 30px;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.controls-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 20px;
+    font-size: 9px;
+    color: #aaa;
+    text-align: left;
+}
+
+.controls-info b {
+    color: #ff8c00;
+}
+
+@media (max-width: 600px) {
+    .overlay-content h1 { font-size: 20px; }
+    .controls-info { grid-template-columns: 1fr; }
+    .hint { display: none; }
+}
