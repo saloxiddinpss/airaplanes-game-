@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Танчики 3D</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game"></div>
+
+    <div class="crosshair">
+        <div class="ch-line ch-top"></div>
+        <div class="ch-line ch-bottom"></div>
+        <div class="ch-line ch-left"></div>
+        <div class="ch-line ch-right"></div>
+        <div class="ch-dot"></div>
+    </div>
+
+    <div class="hud">
+        <div class="hud-left">
+            <div class="hud-label">ENEMIES</div>
+            <div id="enemyCount" class="enemy-count"></div>
+        </div>
+        <div class="hud-right">
+            <div class="hud-item">IP <span id="scoreDisplay" class="score">0</span></div>
+            <div class="hud-item">HI <span id="highScoreDisplay" class="high-score">0</span></div>
+            <div class="hud-item">♥ <span id="livesDisplay">3</span></div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <button id="soundToggle" class="sound-toggle">🔊 Звук: ВКЛ</button>
+        <div class="hint">Стрелки — движение и поворот · Space — выстрел · M — звук · Esc — пауза</div>
+    </div>
+
+    <div class="overlay" id="overlay">
+        <div class="overlay-content">
+            <h1>ТАНЧИКИ 3D</h1>
+            <div class="subtitle">Защити Орла. Уничтожь 10 врагов.</div>
+            <div class="start-btn" id="startBtn">▶ КЛИК ИЛИ ЛЮБАЯ КЛАВИША</div>
+            <div class="controls-info">
+                <div><b>↑ / ↓</b> — вперёд / назад</div>
+                <div><b>← / →</b> — поворот</div>
+                <div><b>Space</b> — выстрел</div>
+                <div><b>M</b> — вкл/выкл звук</div>
+                <div><b>Esc</b> — пауза</div>
+            </div>
+            <div class="controls-info" style="margin-top: 20px; color: #666; font-size: 8px;">
+                Управление работает на любой раскладке клавиатуры.
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
